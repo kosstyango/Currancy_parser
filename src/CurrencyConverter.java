@@ -6,11 +6,11 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import static java.lang.Integer.parseInt;
 
-public class CurrancyConverter {
+public class CurrencyConverter {
             public static void main(String[] args) {
             init();
         }
-        
+
         private static void init() {//готовим второй поток
             Thread secThread;
             //переопределяем run
@@ -22,19 +22,19 @@ public class CurrancyConverter {
                     System.out.println(i + ": \t" + data.get(i).children().get(3).text());
                 }
                 System.out.println("Пожалуйста, укажите номер валюты для обмена");
-                int userChoice1 = getCorrectIntCurrancy(data);
-                double currancyRate1 = Double.parseDouble(data.get(userChoice1).children().get(4).text().replace(',', '.'));
-                int currancyQuantity1 = Integer.parseInt(data.get(userChoice1).children().get(2).text());
+                int userChoice1 = getCorrectIntCurrency(data);
+                double currencyRate1 = Double.parseDouble(data.get(userChoice1).children().get(4).text().replace(',', '.'));
+                int currencyQuantity1 = Integer.parseInt(data.get(userChoice1).children().get(2).text());
 
                 System.out.println("Спасибо. В какую валюту желаете конвертировать?");
-                int userChoice2 = getCorrectIntCurrancy(data);
-                double currancyRate2 = Double.parseDouble(data.get(userChoice2).children().get(4).text().replace(',', '.'));
-                int currancyQuantity2 = Integer.parseInt(data.get(userChoice2).children().get(2).text());
+                int userChoice2 = getCorrectIntCurrency(data);
+                double currencyRate2 = Double.parseDouble(data.get(userChoice2).children().get(4).text().replace(',', '.'));
+                int currencyQuantity2 = Integer.parseInt(data.get(userChoice2).children().get(2).text());
 
                 System.out.println("Спасибо. Какую сумму хотите обменять?");
                 int userChoice3 = getCorrectInt();
 
-                double result = (userChoice3 * currancyRate1 * currancyQuantity2) / (currancyRate2 * currancyQuantity1);
+                double result = (userChoice3 * currencyRate1 * currencyQuantity2) / (currencyRate2 * currencyQuantity1);
                 System.out.println("При обмене " + userChoice3 + " " + data.get(userChoice1).children().get(3).text() + " на " + data.get(userChoice2).children().get(3).text() + " Вы получите " + result + " " + data.get(userChoice2).children().get(3).text());
             };
             secThread = new Thread(runnable);
@@ -56,7 +56,7 @@ public class CurrancyConverter {
             return null;
         }
 
-        private static int getCorrectIntCurrancy(Elements data) {
+        private static int getCorrectIntCurrency(Elements data) {
             System.out.println("введите порядковый номер");
             int currencyNumber = getCorrectInt();
             boolean isCorrectInput = false;
