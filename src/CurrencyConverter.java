@@ -35,7 +35,9 @@ public class CurrencyConverter {
                 int userChoice3 = getCorrectInt();
 
                 double result = (userChoice3 * currencyRate1 * currencyQuantity2) / (currencyRate2 * currencyQuantity1);
-                System.out.println("При обмене " + userChoice3 + " " + data.get(userChoice1).children().get(3).text() + " на " + data.get(userChoice2).children().get(3).text() + " Вы получите " + result + " " + data.get(userChoice2).children().get(3).text());
+                System.out.println("При обмене " + userChoice3 + " " + data.get(userChoice1).children().get(3).text() + " на " + data.get(userChoice2).children().get(3).text() + " Вы получите: ");
+                System.out.format("%.2f", result);
+                System.out.println(" " + data.get(userChoice2).children().get(3).text());
             };
             secThread = new Thread(runnable);
             secThread.start();
